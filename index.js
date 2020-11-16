@@ -5,18 +5,20 @@ const minGuess = 0
 
 let guess = 
 
-document.getElementById('too-high-btn').addEventListener('click', function () {
-    setMessage(`Is it ${guess}?`)
+
+document.getElementById('too-high-btn').addEventListener('click', function () {  
+    guess = guess - guess/2
+    UpdateMessage()
 })
 
-document.getElementById('too-low-btn').addEventListener('click', function () {
-    setMessage(`Is it ${guess}?`)
+document.getElementById('too-low-btn').addEventListener('click', function () { 
+    guess = guess + guess/2
+    UpdateMessage()
 })
 
 document.getElementById("is-correct-btn").addEventListener("click", function(){
     setMessage("woohooo!")
 })
-
 
 function setMessage(msg) {
     document.getElementById('message').innerText = msg
@@ -26,9 +28,13 @@ function start() {
     document.getElementById('before-start').style.display = 'none'
     document.querySelector('main').style.display = 'block'
 
-    guess =        /*Math.floor(Math.random()*101)*/
+    guess =  50  /*Math.floor(Math.random()*101)*/
 
-    setMessage(`Is it ${guess}?`)
+    setMessage(`Is it ${(guess)}?`)
+}
+
+function UpdateMessage(){
+    setMessage(Math.floor(guess))
 }
 
 document
